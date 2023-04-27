@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Formulario de cambio de moneda</title>
+    </head>
+    <body>
+        <h1>Cambio de Moneda</h1>
+        <form>
+            <label for="monedaOrigen">Moneda a cambiar:</label>
+            <select name="monedaOrigen" id="monedaOrigen">
+                <option value="dolar">Dolar</option>
+                <option value="soles">Soles</option>
+                <option value="euros">Euros</option>
+            </select><br><br>
+
+            <label for="monedaDestino">Moneda deseada:</label>
+            <select name="monedaDestino" id="monedaDestino">
+                <option value="dolar">Dolar</option>
+                <option value="soles">Soles</option>
+                <option value="Euros">Euros</option>
+            </select><br><br>
+            <label for="monto">Monto a cambiar:</label>
+            <input type="number" name="monto" id="monto"><br><br>
+            <button type="button" onclick="calcularTotal()">Calcular Total</button>
+        </form>
+    </body>
+    <script>
+        function calcularTotal(){
+            var monedaOrigen=document.getElementById("monedaOrigen").value;
+            var monedaDestino=document.getElementById("monedaDestino").value;
+            var monto=document.getElementById("monto").value;
+            var tipoCambio=1;
+            if (monedaOrigen=="dolar" && monedaDestino=="soles"){
+                tipoCambio=4.0;
+            }   else if (monedaOrigen=="soles" && monedaDestino=="dolar"){
+                tipoCambio=0.25;
+            }   else if (monedaOrigen=="dolar" && monedaDestino=="euros"){
+                tipoCambio=0.85;
+            }   else if (monedaOrigen=="euros" && monedaDestino=="dolar"){
+                tipoCambio=1.18;
+            }   else if (monedaOrigen=="soles" && monedaDestino=="euros"){
+                tipoCambio=0.22;
+            }   else if (monedaOrigen=="euros" && monedaDestino=="soles"){
+                tipoCambio=4.52;
+            }
+            var Total = monto*tipoCambio;
+            alert("Total a recibir: "+Total.toFixed(2)+" "+monedaDestino.toUpperCase());
+        }
+    </script>

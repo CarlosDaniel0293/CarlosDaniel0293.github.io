@@ -1,0 +1,16 @@
+<body>
+    <input type="radio" name="eleccion" value="Opcion1" checked onclick="muestraOpcion()">Opcion1</br>
+    <input type="radio" name="eleccion" value="Opcion2" onclick="muestraOpcion()">Opcion2</br>
+    <div id="resultado"></div>
+
+    <script>
+        function muestraOpcion() {
+            var opciones = document.getElementsByName("eleccion");
+            for (let i = 0; i < opciones.length; i++){
+                if (opciones[i].checked) {
+                        document.getElementById("resultado").innerHTML = "La opcion seleccionada es: " + opciones[i].value;
+                }
+            }
+        }
+    </script>
+</body>
